@@ -20,14 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#include "BakefileTests/BakefileTests.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include "BakefileTests.h"
 
-int main(int argc, char* argv[])
+void AddBakefileTests(TestHarness& theTestHarness)
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyBakefileCore");
-
-    AddBakefileTests(theTestHarness);
-
-    return theTestHarness.run();
+    TestSequence& bakefileTestSequence = theTestHarness.appendTestSequence("Bakefile tests");
 }

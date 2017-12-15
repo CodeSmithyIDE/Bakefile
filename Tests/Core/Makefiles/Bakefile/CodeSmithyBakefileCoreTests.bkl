@@ -20,8 +20,15 @@ program CodeSmithyBakefileCoreTests : IshikoTestFrameworkCore
         archs = x86 x86_64;
     }
 
+    headers
+    {
+        ../../Source/BakefileTests/BakefileTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+
+        ../../Source/BakefileTests/BakefileTests.cpp
     }
 }
