@@ -20,16 +20,18 @@
     IN THE SOFTWARE.
 */
 
-#include "BakefileTests/BakefileTests.h"
-#include "BakefileParserTests/BakefileParserTests.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include "BakefileParserTests.h"
+#include "CodeSmithy/Bakefile/Core/BakefileParser.h"
 
-int main(int argc, char* argv[])
+void AddBakefileParserTests(TestHarness& theTestHarness)
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyBakefileCore");
+    TestSequence& bakefileParserTestSequence = theTestHarness.appendTestSequence("BakefileParser tests");
 
-    AddBakefileTests(theTestHarness);
-    AddBakefileParserTests(theTestHarness);
+    new HeapAllocationErrorsTest("Creation test 1", BakefileParserCreationTest1, bakefileParserTestSequence);
+}
 
-    return theTestHarness.run();
+TestResult::EOutcome BakefileParserCreationTest1()
+{
+    CodeSmithy::BakefileParser parser;
+    return TestResult::ePassed;
 }
