@@ -20,12 +20,18 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Bakefile\Core\Bakefile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Bakefile\Core\BakefileParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Bakefile\Core\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Bakefile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BakefileParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
