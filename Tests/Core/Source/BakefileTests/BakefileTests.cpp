@@ -21,8 +21,17 @@
 */
 
 #include "BakefileTests.h"
+#include "CodeSmithy/Bakefile/Core/Bakefile.h"
 
 void AddBakefileTests(TestHarness& theTestHarness)
 {
     TestSequence& bakefileTestSequence = theTestHarness.appendTestSequence("Bakefile tests");
+
+    new HeapAllocationErrorsTest("Creation test 1", BakefileCreationTest1, bakefileTestSequence);
+}
+
+TestResult::EOutcome BakefileCreationTest1()
+{
+    CodeSmithy::Bakefile bakefile;
+    return TestResult::ePassed;
 }

@@ -40,6 +40,7 @@ endif
 #      BOOST_ROOT                 Path to the Boost installation
 #      ISHIKO_PROCESS_ROOT        Path to the Ishiko Process installation
 #      ISHIKO_TESTFRAMEWORK_ROOT  Path to the Ishiko TestFramework installation
+#      CODESMITHY_ROOT            Path to the CodeSmithy installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -66,19 +67,21 @@ BOOST_ROOT ?= $(BOOST)
 ISHIKO_PROCESS_ROOT ?= $(ISHIKO)/Process
 # Path to the Ishiko TestFramework installation
 ISHIKO_TESTFRAMEWORK_ROOT ?= $(ISHIKO)/TestFramework
+# Path to the CodeSmithy installation
+CODESMITHY_ROOT ?= $(CODESMITHY)
 
 # ------------
 
 all: $(_builddir)CodeSmithyBakefileCoreTests
 
 $(_builddir)CodeSmithyBakefileCoreTests: $(_builddir)CodeSmithyBakefileCoreTests_main.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTests.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyBakefileCoreTests_main.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTests.o -L$(ISHIKO_PROCESS_ROOT)/Lib -L$(BOOST_ROOT)/stage/lib -L$(ISHIKO_TESTFRAMEWORK_ROOT)/Lib -lIshikoTestFrameworkCore -lIshikoProcess -lboost_filesystem -lboost_system -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyBakefileCoreTests_main.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTests.o -L$(CODESMITHY_ROOT)/Bakefile/Lib -L$(ISHIKO_PROCESS_ROOT)/Lib -L$(BOOST_ROOT)/stage/lib -L$(ISHIKO_TESTFRAMEWORK_ROOT)/Lib -lIshikoTestFrameworkCore -lIshikoProcess -lboost_filesystem -lboost_system -pthread
 
 $(_builddir)CodeSmithyBakefileCoreTests_main.o: ../../Source/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(CODESMITHY_ROOT)/Bakefile/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/main.cpp
 
 $(_builddir)CodeSmithyBakefileCoreTests_BakefileTests.o: ../../Source/BakefileTests/BakefileTests.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/BakefileTests/BakefileTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(CODESMITHY_ROOT)/Bakefile/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/BakefileTests/BakefileTests.cpp
 
 clean:
 	rm -f $(_builddir)*.o

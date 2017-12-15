@@ -29,4 +29,6 @@ using namespace Ishiko::TestFramework;
 
 void AddBakefileTests(TestHarness& theTestHarness);
 
+TestResult::EOutcome BakefileCreationTest1();
+
 #endif

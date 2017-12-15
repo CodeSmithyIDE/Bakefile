@@ -1,5 +1,7 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
+codesmithypath = envvar("CODESMITHY");
+import $(codesmithypath)/Bakefile/Include/CodeSmithy/Bakefile/CodeSmithyBakefileCore.bkl;
 
 toolsets = gnu vs2015 vs2013;
 
@@ -7,7 +9,7 @@ gnu.makefile = ../GNUmakefile/GNUmakefile;
 vs2015.solutionfile = ../VC14/CodeSmithyBakefileCoreTests.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyBakefileCoreTests.sln;
 
-program CodeSmithyBakefileCoreTests : IshikoTestFrameworkCore
+program CodeSmithyBakefileCoreTests : CodeSmithyBakefileCore, IshikoTestFrameworkCore
 {
     if ($(toolset) == gnu)
     {

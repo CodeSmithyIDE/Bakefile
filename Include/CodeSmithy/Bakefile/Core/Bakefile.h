@@ -23,4 +23,13 @@
 #ifndef _CODESMITHY_BAKEFILE_CORE_BAKEFILE_H_
 #define _CODESMITHY_BAKEFILE_CORE_BAKEFILE_H_
 
+namespace CodeSmithy
+{
+
+class Bakefile
+{
+};
+
+}
+
 #endif
