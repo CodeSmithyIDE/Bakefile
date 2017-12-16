@@ -21,19 +21,17 @@
 */
 
 #include "BakefileTargetTests.h"
-#include "BakefileTests/BakefileTests.h"
-#include "BakefileParserTests/BakefileParserTests.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include "CodeSmithy/Bakefile/Core/BakefileTarget.h"
 
-int main(int argc, char* argv[])
+void AddBakefileTargetTests(TestHarness& theTestHarness)
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyBakefileCore");
+    TestSequence& bakefileTargetTestSequence = theTestHarness.appendTestSequence("BakefileTarget tests");
 
-    theTestHarness.environment().setTestDataDirectory("../../TestData");
+    new HeapAllocationErrorsTest("Creation test 1", BakefileTargetCreationTest1, bakefileTargetTestSequence);
+}
 
-    AddBakefileTargetTests(theTestHarness);
-    AddBakefileTests(theTestHarness);
-    AddBakefileParserTests(theTestHarness);
-
-    return theTestHarness.run();
+TestResult::EOutcome BakefileTargetCreationTest1()
+{
+    CodeSmithy::BakefileTarget target;
+    return TestResult::ePassed;
 }

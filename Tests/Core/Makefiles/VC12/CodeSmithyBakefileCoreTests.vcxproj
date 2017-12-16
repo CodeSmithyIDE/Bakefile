@@ -153,10 +153,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\BakefileTargetTests.cpp" />
     <ClCompile Include="..\..\Source\BakefileTests\BakefileTests.cpp" />
     <ClCompile Include="..\..\Source\BakefileParserTests\BakefileParserTests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\BakefileTargetTests.h" />
     <ClInclude Include="..\..\Source\BakefileTests\BakefileTests.h" />
     <ClInclude Include="..\..\Source\BakefileParserTests\BakefileParserTests.h" />
   </ItemGroup>
