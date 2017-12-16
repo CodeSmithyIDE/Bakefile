@@ -35,21 +35,23 @@ void AddBakefileParserTests(TestHarness& theTestHarness)
 
 TestResult::EOutcome BakefileParserCreationTest1(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "BakefileParserTests/MinimalBakefile.bkl");
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "MinimalBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
     CodeSmithy::BakefileParser parser(input);
+    input.close();
 
     return TestResult::ePassed;
 }
 
 TestResult::EOutcome BakefileParserParseTest1(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "BakefileParserTests/MinimalBakefile.bkl");
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "MinimalBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
     CodeSmithy::BakefileParser parser(input);
     parser.parse();
+    input.close();
 
     return TestResult::ePassed;
 }

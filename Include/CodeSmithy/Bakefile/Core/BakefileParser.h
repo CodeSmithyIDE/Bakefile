@@ -23,7 +23,9 @@
 #ifndef _CODESMITHY_BAKEFILE_CORE_BAKEFILEPASRER_H_
 #define _CODESMITHY_BAKEFILE_CORE_BAKEFILEPASRER_H_
 
+#include "Bakefile.h"
 #include <istream>
+#include <memory>
 
 namespace CodeSmithy
 {
@@ -34,7 +36,7 @@ public:
     BakefileParser(std::istream& input);
     ~BakefileParser();
 
-    void parse();
+    std::shared_ptr<Bakefile> parse();
 
 private:
     std::istream& m_input;
