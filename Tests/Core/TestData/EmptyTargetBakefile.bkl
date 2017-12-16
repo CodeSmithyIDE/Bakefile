@@ -1,0 +1,5 @@
+toolsets = vs2015;
+
+program HelloWorld
+{
+}

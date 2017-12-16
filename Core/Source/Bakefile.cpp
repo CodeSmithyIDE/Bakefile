@@ -33,4 +33,9 @@ Bakefile::~Bakefile()
 {
 }
 
+std::vector<std::shared_ptr<BakefileTarget> >& Bakefile::targets()
+{
+    return m_targets;
+}
+
 }

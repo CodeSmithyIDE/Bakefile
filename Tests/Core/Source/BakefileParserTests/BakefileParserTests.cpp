@@ -31,6 +31,7 @@ void AddBakefileParserTests(TestHarness& theTestHarness)
     new HeapAllocationErrorsTest("Creation test 1", BakefileParserCreationTest1, bakefileParserTestSequence);
 
     new HeapAllocationErrorsTest("parse test 1", BakefileParserParseTest1, bakefileParserTestSequence);
+    new HeapAllocationErrorsTest("parse test 2", BakefileParserParseTest2, bakefileParserTestSequence);
 }
 
 TestResult::EOutcome BakefileParserCreationTest1(Test& test)
@@ -46,12 +47,38 @@ TestResult::EOutcome BakefileParserCreationTest1(Test& test)
 
 TestResult::EOutcome BakefileParserParseTest1(Test& test)
 {
+    TestResult::EOutcome result = TestResult::eFailed;
+
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "MinimalBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
     CodeSmithy::BakefileParser parser(input);
-    parser.parse();
+    std::shared_ptr<CodeSmithy::Bakefile> bakefile = parser.parse();
     input.close();
 
-    return TestResult::ePassed;
+    if (bakefile->targets().empty())
+    {
+        result = TestResult::ePassed;
+    }
+
+    return result;
+}
+
+TestResult::EOutcome BakefileParserParseTest2(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "EmptyTargetBakefile.bkl");
+
+    std::ifstream input(inputPath.c_str());
+    CodeSmithy::BakefileParser parser(input);
+    std::shared_ptr<CodeSmithy::Bakefile> bakefile = parser.parse();
+    input.close();
+
+    if (bakefile->targets().size() == 1)
+    {
+        result = TestResult::ePassed;
+    }
+
+    return result;
 }

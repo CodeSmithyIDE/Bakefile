@@ -31,5 +31,6 @@ void AddBakefileParserTests(TestHarness& theTestHarness);
 
 TestResult::EOutcome BakefileParserCreationTest1(Test& test);
 TestResult::EOutcome BakefileParserParseTest1(Test& test);
+TestResult::EOutcome BakefileParserParseTest2(Test& test);
 
 #endif
