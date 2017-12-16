@@ -25,7 +25,8 @@
 namespace CodeSmithy
 {
 
-BakefileParser::BakefileParser()
+BakefileParser::BakefileParser(std::istream& input)
+    : m_input(input)
 {
 }
 

@@ -29,6 +29,6 @@ using namespace Ishiko::TestFramework;
 
 void AddBakefileParserTests(TestHarness& theTestHarness);
 
-TestResult::EOutcome BakefileParserCreationTest1();
+TestResult::EOutcome BakefileParserCreationTest1(Test& test);
 
 #endif

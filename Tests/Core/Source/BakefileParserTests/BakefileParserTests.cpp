@@ -22,6 +22,7 @@
 
 #include "BakefileParserTests.h"
 #include "CodeSmithy/Bakefile/Core/BakefileParser.h"
+#include <fstream>
 
 void AddBakefileParserTests(TestHarness& theTestHarness)
 {
@@ -30,8 +31,12 @@ void AddBakefileParserTests(TestHarness& theTestHarness)
     new HeapAllocationErrorsTest("Creation test 1", BakefileParserCreationTest1, bakefileParserTestSequence);
 }
 
-TestResult::EOutcome BakefileParserCreationTest1()
+TestResult::EOutcome BakefileParserCreationTest1(Test& test)
 {
-    CodeSmithy::BakefileParser parser;
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "BakefileParserTests/MinimalBakefile.bkl");
+
+    std::ifstream input(inputPath.c_str());
+    CodeSmithy::BakefileParser parser(input);
+
     return TestResult::ePassed;
 }

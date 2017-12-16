@@ -23,14 +23,19 @@
 #ifndef _CODESMITHY_BAKEFILE_CORE_BAKEFILEPASRER_H_
 #define _CODESMITHY_BAKEFILE_CORE_BAKEFILEPASRER_H_
 
+#include <istream>
+
 namespace CodeSmithy
 {
 
 class BakefileParser
 {
 public:
-    BakefileParser();
+    BakefileParser(std::istream& input);
     ~BakefileParser();
+
+private:
+    std::istream& m_input;
 };
 
 }
