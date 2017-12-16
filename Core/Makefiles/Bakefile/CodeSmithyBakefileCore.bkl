@@ -28,6 +28,7 @@ library CodeSmithyBakefileCore
     headers
     {
         ../../../Include/CodeSmithy/Bakefile/Core/Bakefile.h
+        ../../../Include/CodeSmithy/Bakefile/Core/BakefileTarget.h
         ../../../Include/CodeSmithy/Bakefile/Core/BakefileParser.h
         ../../../Include/CodeSmithy/Bakefile/Core/linkoptions.h
     }
@@ -35,6 +36,7 @@ library CodeSmithyBakefileCore
     sources
     {
         ../../Source/Bakefile.cpp
+        ../../Source/BakefileTarget.cpp
         ../../Source/BakefileParser.cpp
     }
 }

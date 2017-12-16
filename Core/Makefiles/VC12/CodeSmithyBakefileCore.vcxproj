@@ -151,10 +151,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Bakefile.cpp" />
+    <ClCompile Include="..\..\Source\BakefileTarget.cpp" />
     <ClCompile Include="..\..\Source\BakefileParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Bakefile\Core\Bakefile.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Bakefile\Core\BakefileTarget.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Bakefile\Core\BakefileParser.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Bakefile\Core\linkoptions.h" />
   </ItemGroup>
