@@ -30,6 +30,7 @@ library CodeSmithyBakefileCore
         ../../../Include/CodeSmithy/Bakefile/Core/Bakefile.h
         ../../../Include/CodeSmithy/Bakefile/Core/BakefileTarget.h
         ../../../Include/CodeSmithy/Bakefile/Core/BakefileParser.h
+        ../../../Include/CodeSmithy/Bakefile/Core/BakefileToken.h
         ../../../Include/CodeSmithy/Bakefile/Core/BakefileTokenizer.h
         ../../../Include/CodeSmithy/Bakefile/Core/linkoptions.h
     }
@@ -38,6 +39,7 @@ library CodeSmithyBakefileCore
     {
         ../../Source/Bakefile.cpp
         ../../Source/BakefileTarget.cpp
+        ../../Source/BakefileToken.cpp
         ../../Source/BakefileTokenizer.cpp
         ../../Source/BakefileParser.cpp
     }

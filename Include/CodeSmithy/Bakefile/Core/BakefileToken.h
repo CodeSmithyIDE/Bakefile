@@ -20,21 +20,21 @@
     IN THE SOFTWARE.
 */
 
-#include "BakefileTokenizer.h"
+#ifndef _CODESMITHY_BAKEFILE_CORE_BAKEFILETOKEN_H_
+#define _CODESMITHY_BAKEFILE_CORE_BAKEFILETOKEN_H_
 
 namespace CodeSmithy
 {
 
-BakefileTokenizer::BakefileTokenizer()
+class BakefileToken
 {
-}
-
-BakefileTokenizer::~BakefileTokenizer()
-{
-}
-
-void BakefileTokenizer::getNextToken()
-{
-}
+public:
+    BakefileToken();
+    ~BakefileToken();
+};
 
 }
+
+#include "linkoptions.h"
+
+#endif

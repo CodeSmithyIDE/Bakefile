@@ -31,6 +31,8 @@ class BakefileTokenizer
 public:
     BakefileTokenizer();
     ~BakefileTokenizer();
+
+    void getNextToken();
 };
 
 }

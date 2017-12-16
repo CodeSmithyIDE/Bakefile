@@ -20,20 +20,16 @@
     IN THE SOFTWARE.
 */
 
-#include "BakefileTokenizer.h"
+#include "BakefileToken.h"
 
 namespace CodeSmithy
 {
 
-BakefileTokenizer::BakefileTokenizer()
+BakefileToken::BakefileToken()
 {
 }
 
-BakefileTokenizer::~BakefileTokenizer()
-{
-}
-
-void BakefileTokenizer::getNextToken()
+BakefileToken::~BakefileToken()
 {
 }
 
