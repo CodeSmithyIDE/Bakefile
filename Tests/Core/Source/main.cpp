@@ -28,6 +28,8 @@ int main(int argc, char* argv[])
 {
     Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyBakefileCore");
 
+    theTestHarness.environment().setTestDataDirectory("../../TestData");
+
     AddBakefileTests(theTestHarness);
     AddBakefileParserTests(theTestHarness);
 

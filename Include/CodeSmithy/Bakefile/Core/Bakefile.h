@@ -28,8 +28,13 @@ namespace CodeSmithy
 
 class Bakefile
 {
+public:
+    Bakefile();
+    ~Bakefile();
 };
 
 }
+
+#include "linkoptions.h"
 
 #endif

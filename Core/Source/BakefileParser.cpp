@@ -21,3 +21,16 @@
 */
 
 #include "BakefileParser.h"
+
+namespace CodeSmithy
+{
+
+BakefileParser::BakefileParser()
+{
+}
+
+BakefileParser::~BakefileParser()
+{
+}
+
+}
