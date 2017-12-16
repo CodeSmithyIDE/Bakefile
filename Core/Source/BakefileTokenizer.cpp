@@ -20,30 +20,17 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_BAKEFILE_CORE_BAKEFILEPARSER_H_
-#define _CODESMITHY_BAKEFILE_CORE_BAKEFILEPARSER_H_
-
-#include "Bakefile.h"
-#include <istream>
-#include <memory>
+#include "BakefileTokenizer.h"
 
 namespace CodeSmithy
 {
 
-class BakefileParser
+BakefileTokenizer::BakefileTokenizer()
 {
-public:
-    BakefileParser(std::istream& input);
-    ~BakefileParser();
-
-    std::shared_ptr<Bakefile> parse();
-
-private:
-    std::istream& m_input;
-};
-
 }
 
-#include "linkoptions.h"
+BakefileTokenizer::~BakefileTokenizer()
+{
+}
 
-#endif
+}

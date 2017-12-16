@@ -56,8 +56,8 @@ $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_er
 endif
 all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBakefileCore-d,CodeSmithyBakefileCore).a
 
-../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBakefileCore-d,CodeSmithyBakefileCore).a: $(_builddir)CodeSmithyBakefileCore_Bakefile.o $(_builddir)CodeSmithyBakefileCore_BakefileTarget.o $(_builddir)CodeSmithyBakefileCore_BakefileParser.o
-	$(AR) rcu $@ $(_builddir)CodeSmithyBakefileCore_Bakefile.o $(_builddir)CodeSmithyBakefileCore_BakefileTarget.o $(_builddir)CodeSmithyBakefileCore_BakefileParser.o
+../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBakefileCore-d,CodeSmithyBakefileCore).a: $(_builddir)CodeSmithyBakefileCore_Bakefile.o $(_builddir)CodeSmithyBakefileCore_BakefileTarget.o $(_builddir)CodeSmithyBakefileCore_BakefileTokenizer.o $(_builddir)CodeSmithyBakefileCore_BakefileParser.o
+	$(AR) rcu $@ $(_builddir)CodeSmithyBakefileCore_Bakefile.o $(_builddir)CodeSmithyBakefileCore_BakefileTarget.o $(_builddir)CodeSmithyBakefileCore_BakefileTokenizer.o $(_builddir)CodeSmithyBakefileCore_BakefileParser.o
 	$(RANLIB) $@
 
 $(_builddir)CodeSmithyBakefileCore_Bakefile.o: ../../Source/Bakefile.cpp
@@ -65,6 +65,9 @@ $(_builddir)CodeSmithyBakefileCore_Bakefile.o: ../../Source/Bakefile.cpp
 
 $(_builddir)CodeSmithyBakefileCore_BakefileTarget.o: ../../Source/BakefileTarget.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Bakefile/Core -std=c++11 ../../Source/BakefileTarget.cpp
+
+$(_builddir)CodeSmithyBakefileCore_BakefileTokenizer.o: ../../Source/BakefileTokenizer.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Bakefile/Core -std=c++11 ../../Source/BakefileTokenizer.cpp
 
 $(_builddir)CodeSmithyBakefileCore_BakefileParser.o: ../../Source/BakefileParser.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Bakefile/Core -std=c++11 ../../Source/BakefileParser.cpp
