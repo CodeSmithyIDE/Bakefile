@@ -156,11 +156,13 @@
     <ClCompile Include="..\..\Source\BakefileTargetTests.cpp" />
     <ClCompile Include="..\..\Source\BakefileTests\BakefileTests.cpp" />
     <ClCompile Include="..\..\Source\BakefileParserTests\BakefileParserTests.cpp" />
+    <ClCompile Include="..\..\Source\BakefileTokenizerTests\BakefileTokenizerTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\BakefileTargetTests.h" />
     <ClInclude Include="..\..\Source\BakefileTests\BakefileTests.h" />
     <ClInclude Include="..\..\Source\BakefileParserTests\BakefileParserTests.h" />
+    <ClInclude Include="..\..\Source\BakefileTokenizerTests\BakefileTokenizerTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

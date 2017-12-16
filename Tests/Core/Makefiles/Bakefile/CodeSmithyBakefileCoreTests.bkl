@@ -28,6 +28,7 @@ program CodeSmithyBakefileCoreTests : CodeSmithyBakefileCore, IshikoTestFramewor
 
         ../../Source/BakefileTests/BakefileTests.h
         ../../Source/BakefileParserTests/BakefileParserTests.h
+        ../../Source/BakefileTokenizerTests/BakefileTokenizerTests.h
     }
 
     sources
@@ -37,5 +38,7 @@ program CodeSmithyBakefileCoreTests : CodeSmithyBakefileCore, IshikoTestFramewor
 
         ../../Source/BakefileTests/BakefileTests.cpp
         ../../Source/BakefileParserTests/BakefileParserTests.cpp
+        ../../Source/BakefileTokenizerTests/BakefileTokenizerTests.cpp
+
     }
 }

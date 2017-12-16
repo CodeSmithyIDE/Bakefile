@@ -26,6 +26,9 @@
     <ClInclude Include="..\..\Source\BakefileParserTests\BakefileParserTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\BakefileTokenizerTests\BakefileTokenizerTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp">
@@ -38,6 +41,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BakefileParserTests\BakefileParserTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BakefileTokenizerTests\BakefileTokenizerTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

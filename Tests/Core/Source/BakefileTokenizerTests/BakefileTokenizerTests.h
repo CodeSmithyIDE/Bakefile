@@ -20,22 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "BakefileTargetTests.h"
-#include "BakefileTests/BakefileTests.h"
-#include "BakefileTokenizerTests/BakefileTokenizerTests.h"
-#include "BakefileParserTests/BakefileParserTests.h"
+#ifndef _CODESMITHY_TEST_BAKEFILE_CORE_BAKEFILETOKENIZERTESTS_BAKEFILETOKENIZERTESTS_H_
+#define _CODESMITHY_TEST_BAKEFILE_CORE_BAKEFILETOKENIZERTESTS_BAKEFILETOKENIZERTESTS_H_
+
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-int main(int argc, char* argv[])
-{
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyBakefileCore");
+using namespace Ishiko::TestFramework;
 
-    theTestHarness.environment().setTestDataDirectory("../../TestData");
+void AddBakefileTokenizerTests(TestHarness& theTestHarness);
 
-    AddBakefileTargetTests(theTestHarness);
-    AddBakefileTests(theTestHarness);
-    AddBakefileTokenizerTests(theTestHarness);
-    AddBakefileParserTests(theTestHarness);
+TestResult::EOutcome BakefileTokenizerCreationTest1();
 
-    return theTestHarness.run();
-}
+#endif

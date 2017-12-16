@@ -74,8 +74,8 @@ CODESMITHY_ROOT ?= $(CODESMITHY)
 
 all: $(_builddir)CodeSmithyBakefileCoreTests
 
-$(_builddir)CodeSmithyBakefileCoreTests: $(_builddir)CodeSmithyBakefileCoreTests_main.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTargetTests.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTests.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileParserTests.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyBakefileCoreTests_main.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTargetTests.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTests.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileParserTests.o -L$(CODESMITHY_ROOT)/Bakefile/Lib -L$(ISHIKO_PROCESS_ROOT)/Lib -L$(BOOST_ROOT)/stage/lib -L$(ISHIKO_TESTFRAMEWORK_ROOT)/Lib -lIshikoTestFrameworkCore -lIshikoProcess -lboost_filesystem -lboost_system -pthread
+$(_builddir)CodeSmithyBakefileCoreTests: $(_builddir)CodeSmithyBakefileCoreTests_main.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTargetTests.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTests.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileParserTests.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTokenizerTests.o
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyBakefileCoreTests_main.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTargetTests.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTests.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileParserTests.o $(_builddir)CodeSmithyBakefileCoreTests_BakefileTokenizerTests.o -L$(CODESMITHY_ROOT)/Bakefile/Lib -L$(ISHIKO_PROCESS_ROOT)/Lib -L$(BOOST_ROOT)/stage/lib -L$(ISHIKO_TESTFRAMEWORK_ROOT)/Lib -lIshikoTestFrameworkCore -lIshikoProcess -lboost_filesystem -lboost_system -pthread
 
 $(_builddir)CodeSmithyBakefileCoreTests_main.o: ../../Source/main.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(CODESMITHY_ROOT)/Bakefile/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/main.cpp
@@ -88,6 +88,9 @@ $(_builddir)CodeSmithyBakefileCoreTests_BakefileTests.o: ../../Source/BakefileTe
 
 $(_builddir)CodeSmithyBakefileCoreTests_BakefileParserTests.o: ../../Source/BakefileParserTests/BakefileParserTests.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(CODESMITHY_ROOT)/Bakefile/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/BakefileParserTests/BakefileParserTests.cpp
+
+$(_builddir)CodeSmithyBakefileCoreTests_BakefileTokenizerTests.o: ../../Source/BakefileTokenizerTests/BakefileTokenizerTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(CODESMITHY_ROOT)/Bakefile/Include -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/BakefileTokenizerTests/BakefileTokenizerTests.cpp
 
 clean:
 	rm -f $(_builddir)*.o
