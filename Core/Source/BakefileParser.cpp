@@ -34,4 +34,8 @@ BakefileParser::~BakefileParser()
 {
 }
 
+void BakefileParser::parse()
+{
+}
+
 }

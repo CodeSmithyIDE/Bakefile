@@ -34,6 +34,8 @@ public:
     BakefileParser(std::istream& input);
     ~BakefileParser();
 
+    void parse();
+
 private:
     std::istream& m_input;
 };

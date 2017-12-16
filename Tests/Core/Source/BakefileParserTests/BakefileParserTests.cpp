@@ -29,6 +29,8 @@ void AddBakefileParserTests(TestHarness& theTestHarness)
     TestSequence& bakefileParserTestSequence = theTestHarness.appendTestSequence("BakefileParser tests");
 
     new HeapAllocationErrorsTest("Creation test 1", BakefileParserCreationTest1, bakefileParserTestSequence);
+
+    new HeapAllocationErrorsTest("parse test 1", BakefileParserParseTest1, bakefileParserTestSequence);
 }
 
 TestResult::EOutcome BakefileParserCreationTest1(Test& test)
@@ -37,6 +39,17 @@ TestResult::EOutcome BakefileParserCreationTest1(Test& test)
 
     std::ifstream input(inputPath.c_str());
     CodeSmithy::BakefileParser parser(input);
+
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome BakefileParserParseTest1(Test& test)
+{
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "BakefileParserTests/MinimalBakefile.bkl");
+
+    std::ifstream input(inputPath.c_str());
+    CodeSmithy::BakefileParser parser(input);
+    parser.parse();
 
     return TestResult::ePassed;
 }
