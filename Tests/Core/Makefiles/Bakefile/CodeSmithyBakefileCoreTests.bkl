@@ -25,6 +25,7 @@ program CodeSmithyBakefileCoreTests : CodeSmithyBakefileCore, IshikoTestFramewor
     headers
     {
         ../../Source/BakefileTargetTests.h
+        ../../Source/BakefileTokenTests.h
 
         ../../Source/BakefileTests/BakefileTests.h
         ../../Source/BakefileParserTests/BakefileParserTests.h
@@ -35,6 +36,7 @@ program CodeSmithyBakefileCoreTests : CodeSmithyBakefileCore, IshikoTestFramewor
     {
         ../../Source/main.cpp
         ../../Source/BakefileTargetTests.cpp
+        ../../Source/BakefileTokenTests.cpp
 
         ../../Source/BakefileTests/BakefileTests.cpp
         ../../Source/BakefileParserTests/BakefileParserTests.cpp
