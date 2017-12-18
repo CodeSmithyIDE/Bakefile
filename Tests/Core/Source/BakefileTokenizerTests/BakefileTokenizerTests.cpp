@@ -22,16 +22,40 @@
 
 #include "BakefileTokenizerTests.h"
 #include "CodeSmithy/Bakefile/Core/BakefileTokenizer.h"
+#include <fstream>
 
 void AddBakefileTokenizerTests(TestHarness& theTestHarness)
 {
     TestSequence& bakefileTokenizerTestSequence = theTestHarness.appendTestSequence("BakefileTokenizer tests");
 
     new HeapAllocationErrorsTest("Creation test 1", BakefileTokenizerCreationTest1, bakefileTokenizerTestSequence);
+
+    new HeapAllocationErrorsTest("getNextToken test 1", BakefileTokenizerGetNextToken, bakefileTokenizerTestSequence);
 }
 
-TestResult::EOutcome BakefileTokenizerCreationTest1()
+TestResult::EOutcome BakefileTokenizerCreationTest1(Test& test)
 {
-    CodeSmithy::BakefileTokenizer tokenizer;
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "MinimalBakefile.bkl");
+
+    std::ifstream input(inputPath.c_str());
+    CodeSmithy::BakefileTokenizer tokenizer(input);
+
     return TestResult::ePassed;
+}
+
+TestResult::EOutcome BakefileTokenizerGetNextToken(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "MinimalBakefile.bkl");
+
+    std::ifstream input(inputPath.c_str());
+    CodeSmithy::BakefileTokenizer tokenizer(input);
+    CodeSmithy::BakefileToken token;
+    if (tokenizer.getNextToken(token) == CodeSmithy::BakefileTokenizer::eEnd)
+    {
+        result = TestResult::ePassed;
+    }
+
+    return result;
 }

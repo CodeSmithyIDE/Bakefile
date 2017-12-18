@@ -23,16 +23,29 @@
 #ifndef _CODESMITHY_BAKEFILE_CORE_BAKEFILETOKENIZER_H_
 #define _CODESMITHY_BAKEFILE_CORE_BAKEFILETOKENIZER_H_
 
+#include "BakefileToken.h"
+#include <istream>
+
 namespace CodeSmithy
 {
 
 class BakefileTokenizer
 {
 public:
-    BakefileTokenizer();
+    enum EState
+    {
+        eTokenExtracted = 0,
+        eEnd = 1
+    };
+
+public:
+    BakefileTokenizer(std::istream& input);
     ~BakefileTokenizer();
 
-    void getNextToken();
+    int getNextToken(BakefileToken& token);
+
+private:
+    std::istream& m_input;
 };
 
 }

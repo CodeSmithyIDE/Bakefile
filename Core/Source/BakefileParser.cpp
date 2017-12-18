@@ -26,7 +26,7 @@ namespace CodeSmithy
 {
 
 BakefileParser::BakefileParser(std::istream& input)
-    : m_input(input)
+    : m_tokenizer(input)
 {
 }
 
@@ -38,10 +38,8 @@ std::shared_ptr<Bakefile> BakefileParser::parse()
 {
     std::shared_ptr<Bakefile> result = std::make_shared<Bakefile>();
 
-    const int bufferSize = 1024;
-    std::string buffer;
-    buffer.reserve(bufferSize);
-    while (m_input.get(&buffer[0], bufferSize))
+    BakefileToken token;
+    while (m_tokenizer.getNextToken(token) == BakefileTokenizer::eTokenExtracted)
     {
     }
 

@@ -24,6 +24,7 @@
 #define _CODESMITHY_BAKEFILE_CORE_BAKEFILEPARSER_H_
 
 #include "Bakefile.h"
+#include "BakefileTokenizer.h"
 #include <istream>
 #include <memory>
 
@@ -39,7 +40,7 @@ public:
     std::shared_ptr<Bakefile> parse();
 
 private:
-    std::istream& m_input;
+    BakefileTokenizer m_tokenizer;
 };
 
 }

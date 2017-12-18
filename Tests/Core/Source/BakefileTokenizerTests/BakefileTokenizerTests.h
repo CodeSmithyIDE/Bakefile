@@ -29,6 +29,7 @@ using namespace Ishiko::TestFramework;
 
 void AddBakefileTokenizerTests(TestHarness& theTestHarness);
 
-TestResult::EOutcome BakefileTokenizerCreationTest1();
+TestResult::EOutcome BakefileTokenizerCreationTest1(Test& test);
+TestResult::EOutcome BakefileTokenizerGetNextToken(Test& test);
 
 #endif

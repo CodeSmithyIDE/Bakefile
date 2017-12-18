@@ -25,7 +25,8 @@
 namespace CodeSmithy
 {
 
-BakefileTokenizer::BakefileTokenizer()
+BakefileTokenizer::BakefileTokenizer(std::istream& input)
+    : m_input(input)
 {
 }
 
@@ -33,8 +34,16 @@ BakefileTokenizer::~BakefileTokenizer()
 {
 }
 
-void BakefileTokenizer::getNextToken()
+int BakefileTokenizer::getNextToken(BakefileToken& token)
 {
+    const int bufferSize = 1024;
+    std::string buffer;
+    buffer.reserve(bufferSize);
+    while (m_input.get(&buffer[0], bufferSize))
+    {
+    }
+
+    return eEnd;
 }
 
 }
