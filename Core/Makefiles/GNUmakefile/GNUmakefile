@@ -57,7 +57,7 @@ endif
 all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBakefileCore-d,CodeSmithyBakefileCore).a
 
 ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBakefileCore-d,CodeSmithyBakefileCore).a: $(_builddir)CodeSmithyBakefileCore_Bakefile.o $(_builddir)CodeSmithyBakefileCore_BakefileTarget.o $(_builddir)CodeSmithyBakefileCore_BakefileToken.o $(_builddir)CodeSmithyBakefileCore_BakefileTokenizer.o $(_builddir)CodeSmithyBakefileCore_BakefileParser.o
-	$(AR) rcu $@ $(_builddir)CodeSmithyBakefileCore_Bakefile.o $(_builddir)CodeSmithyBakefileCore_BakefileTarget.o $(_builddir)CodeSmithyBakefileCore_BakefileToken.o $(_builddir)CodeSmithyBakefileCore_BakefileTokenizer.o $(_builddir)CodeSmithyBakefileCore_BakefileParser.o
+	$(AR) rc $@ $(_builddir)CodeSmithyBakefileCore_Bakefile.o $(_builddir)CodeSmithyBakefileCore_BakefileTarget.o $(_builddir)CodeSmithyBakefileCore_BakefileToken.o $(_builddir)CodeSmithyBakefileCore_BakefileTokenizer.o $(_builddir)CodeSmithyBakefileCore_BakefileParser.o
 	$(RANLIB) $@
 
 $(_builddir)CodeSmithyBakefileCore_Bakefile.o: ../../Source/Bakefile.cpp
