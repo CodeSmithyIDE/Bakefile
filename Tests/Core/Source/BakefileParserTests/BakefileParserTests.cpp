@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017 Xavier Leclercq
+    Copyright (c) 2017-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,17 +24,17 @@
 #include "CodeSmithy/Bakefile/Core/BakefileParser.h"
 #include <fstream>
 
-void AddBakefileParserTests(TestHarness& theTestHarness)
+using namespace Ishiko::Tests;
+
+BakefileParserTests::BakefileParserTests(const TestNumber& number, const TestEnvironment& environment)
+	: TestSequence(number, "BakefileParser tests", environment)
 {
-    TestSequence& bakefileParserTestSequence = theTestHarness.appendTestSequence("BakefileParser tests");
-
-    new HeapAllocationErrorsTest("Creation test 1", BakefileParserCreationTest1, bakefileParserTestSequence);
-
-    new HeapAllocationErrorsTest("parse test 1", BakefileParserParseTest1, bakefileParserTestSequence);
-    new HeapAllocationErrorsTest("parse test 2", BakefileParserParseTest2, bakefileParserTestSequence);
+	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+	append<HeapAllocationErrorsTest>("parse test 1", ParseTest1);
+	append<HeapAllocationErrorsTest>("parse test 2", ParseTest2);
 }
 
-TestResult::EOutcome BakefileParserCreationTest1(Test& test)
+void BakefileParserTests::CreationTest1(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "MinimalBakefile.bkl");
 
@@ -42,13 +42,11 @@ TestResult::EOutcome BakefileParserCreationTest1(Test& test)
     CodeSmithy::BakefileParser parser(input);
     input.close();
 
-    return TestResult::ePassed;
+	ISHTF_PASS();
 }
 
-TestResult::EOutcome BakefileParserParseTest1(Test& test)
+void BakefileParserTests::ParseTest1(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "MinimalBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
@@ -56,18 +54,12 @@ TestResult::EOutcome BakefileParserParseTest1(Test& test)
     std::shared_ptr<CodeSmithy::Bakefile> bakefile = parser.parse();
     input.close();
 
-    if (bakefile->targets().empty())
-    {
-        result = TestResult::ePassed;
-    }
-
-    return result;
+	ISHTF_FAIL_UNLESS(bakefile->targets().empty());
+	ISHTF_PASS();
 }
 
-TestResult::EOutcome BakefileParserParseTest2(Test& test)
+void BakefileParserTests::ParseTest2(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "EmptyTargetBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
@@ -75,10 +67,6 @@ TestResult::EOutcome BakefileParserParseTest2(Test& test)
     std::shared_ptr<CodeSmithy::Bakefile> bakefile = parser.parse();
     input.close();
 
-    if (bakefile->targets().size() == 1)
-    {
-        result = TestResult::ePassed;
-    }
-
-    return result;
+	ISHTF_FAIL_UNLESS(bakefile->targets().size() == 1);
+	ISHTF_PASS();
 }

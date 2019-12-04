@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017 Xavier Leclercq
+    Copyright (c) 2017-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,11 +25,14 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class BakefileTokenizerTests : public Ishiko::Tests::TestSequence
+{
+public:
+	BakefileTokenizerTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddBakefileTokenizerTests(TestHarness& theTestHarness);
-
-TestResult::EOutcome BakefileTokenizerCreationTest1(Test& test);
-TestResult::EOutcome BakefileTokenizerGetNextToken(Test& test);
+private:
+	static void CreationTest1(Ishiko::Tests::Test& test);
+	static void GetNextToken(Ishiko::Tests::Test& test);
+};
 
 #endif

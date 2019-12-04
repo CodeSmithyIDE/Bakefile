@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017 Xavier Leclercq
+    Copyright (c) 2017-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,38 +24,33 @@
 #include "CodeSmithy/Bakefile/Core/BakefileTokenizer.h"
 #include <fstream>
 
-void AddBakefileTokenizerTests(TestHarness& theTestHarness)
+using namespace Ishiko::Tests;
+
+BakefileTokenizerTests::BakefileTokenizerTests(const TestNumber& number, const TestEnvironment& environment)
+	: TestSequence(number, "BakefileTokenizer tests", environment)
 {
-    TestSequence& bakefileTokenizerTestSequence = theTestHarness.appendTestSequence("BakefileTokenizer tests");
-
-    new HeapAllocationErrorsTest("Creation test 1", BakefileTokenizerCreationTest1, bakefileTokenizerTestSequence);
-
-    new HeapAllocationErrorsTest("getNextToken test 1", BakefileTokenizerGetNextToken, bakefileTokenizerTestSequence);
+	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+	append<HeapAllocationErrorsTest>("getNextToken test 1", GetNextToken);
 }
 
-TestResult::EOutcome BakefileTokenizerCreationTest1(Test& test)
+void BakefileTokenizerTests::CreationTest1(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "MinimalBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
     CodeSmithy::BakefileTokenizer tokenizer(input);
 
-    return TestResult::ePassed;
+	ISHTF_PASS();
 }
 
-TestResult::EOutcome BakefileTokenizerGetNextToken(Test& test)
+void BakefileTokenizerTests::GetNextToken(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "MinimalBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
     CodeSmithy::BakefileTokenizer tokenizer(input);
     CodeSmithy::BakefileToken token;
-    if (tokenizer.getNextToken(token) == CodeSmithy::BakefileTokenizer::eEnd)
-    {
-        result = TestResult::ePassed;
-    }
 
-    return result;
+	ISHTF_FAIL_UNLESS(tokenizer.getNextToken(token) == CodeSmithy::BakefileTokenizer::eEnd);
+	ISHTF_PASS();
 }
